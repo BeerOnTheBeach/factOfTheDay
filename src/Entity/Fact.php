@@ -25,7 +25,10 @@ class Fact
     private User $author;
 
     #[ORM\Column(nullable: true)]
-    private DateTime $published;
+    private ?DateTime $published;
+
+    #[ORM\Column]
+    private bool $approved = false;
 
     public function getId(): int
     {
@@ -68,14 +71,26 @@ class Fact
         return $this;
     }
 
-    public function getPublished(): DateTime
+    public function getPublished(): ?DateTime
     {
         return $this->published;
     }
 
-    public function setPublished(DateTime $published): static
+    public function setPublished(?DateTime $published): static
     {
         $this->published = $published;
+
+        return $this;
+    }
+
+    public function isApproved(): ?bool
+    {
+        return $this->approved;
+    }
+
+    public function setApproved(bool $approved): static
+    {
+        $this->approved = $approved;
 
         return $this;
     }

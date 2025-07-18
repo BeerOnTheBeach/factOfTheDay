@@ -1,0 +1,13 @@
+{% extends '@!EasyAdmin/layout.html.twig' %}
+
+{% block content_top_header %}
+    <h2>Admin-Panel</h2>
+
+    {% block settings_dropdown_wrapper %}
+        {{ parent() }}
+    {% endblock settings_dropdown_wrapper %}
+{% endblock %}
+
+{% block main %}
+    <p>Click in the menu-items to the left to list, create, edit and delete entities.</p>
+{% endblock %}
