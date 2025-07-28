@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ContributeFactController!{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Hier kannst du einen Fakt-des-Tages einreichen</h1>
+    {{ form_start(form) }}
+    {{ form_row(form.label) }}
+    {{ form_row(form.body) }}
+    {{ form_row(form._token) }}
+    <button type="submit" class="btn btn-primary">Contribute</button>
+    {{ form_end(form, {render_rest: false}) }}
+</div>
+{% endblock %}

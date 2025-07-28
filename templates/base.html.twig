@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
@@ -11,9 +11,22 @@
         {% endblock %}
 
         {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
         {% endblock %}
     </head>
     <body>
         {% block body %}{% endblock %}
+        {% block flashMessages %}
+            <div class="container mt-3">
+                {# read and display all flash messages #}
+                {% for label, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert alert-{{ label }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+        {% endblock %}
     </body>
 </html>

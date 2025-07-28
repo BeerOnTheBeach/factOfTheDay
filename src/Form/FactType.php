@@ -14,8 +14,16 @@ class FactType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('label')
-            ->add('body')
+            ->add('label', null, [
+                'label' => 'Überschrift',
+                'attr' => ['placeholder' => 'Kurzer Titel'],
+                'required' => true,
+            ])
+            ->add('body', null, [
+                'label' => 'Fakt',
+                'attr' => ['placeholder' => 'Dein Fakt hier'],
+                'required' => true,
+            ])
         ;
     }
 

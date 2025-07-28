@@ -15,10 +15,10 @@ class Fact
     #[ORM\Column]
     private int $id;
 
-    #[ORM\Column(length: 255, nullable: true)]
+    #[ORM\Column(length: 255, nullable: false)]
     private string $label;
 
-    #[ORM\Column(type: Types::TEXT, nullable: true)]
+    #[ORM\Column(type: Types::TEXT, nullable: false)]
     private string $body;
 
     #[ORM\ManyToOne(inversedBy: 'facts')]
@@ -29,6 +29,11 @@ class Fact
 
     #[ORM\Column]
     private bool $approved = false;
+
+    public function __toString(): string
+    {
+        return $this->label;
+    }
 
     public function getId(): int
     {

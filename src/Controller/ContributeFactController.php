@@ -14,13 +14,13 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ContributeFactController extends AbstractController
 {
     // TODO: restrict to logged in user via security config
-    #[Route('/fact', name: 'app_contribute_fact')]
+    #[Route('/', name: 'contribute_fact')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();
         if(!($user instanceof User))
         {
-            return $this->redirectToRoute('app_login');
+            return $this->redirectToRoute('login');
         }
         $fact = new Fact();
         $fact->setAuthor($user);
@@ -31,9 +31,10 @@ final class ContributeFactController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $entityManager->persist($fact);
             $entityManager->flush();
+            $this->addFlash('success', 'Danke! Dein Fakt wurde gespeichert und wird bald veröffentlicht.');
         }
 
-        return $this->render('contribute_fact/index.html.twig', [
+        return $this->render('contribute_fact/contribute.html.twig', [
             'form' => $form,
         ]);
     }
