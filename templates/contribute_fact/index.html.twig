@@ -3,10 +3,14 @@
 {% block title %}Hello ContributeFactController!{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1>Here you can contribute a fact</h1>
+    <div class="example-wrapper">
+        <h1>Here you can contribute a fact</h1>
+        {{ form_start(form) }}
+        {{ form_row(form.label) }}
+        {{ form_row(form.body) }}
+        {{ form_row(form._token) }}
+        <button type="submit" class="btn">Contribute</button>
+        {{ form_end(form, {render_rest: false}) }}
 
-    {{ form(form) }}
-
-</div>
+    </div>
 {% endblock %}

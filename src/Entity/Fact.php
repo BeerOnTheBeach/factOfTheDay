@@ -25,7 +25,7 @@ class Fact
     private User $author;
 
     #[ORM\Column(nullable: true)]
-    private ?DateTime $published;
+    private ?DateTime $published = null;
 
     #[ORM\Column]
     private bool $approved = false;

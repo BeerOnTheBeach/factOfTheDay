@@ -16,12 +16,6 @@ class FactType extends AbstractType
         $builder
             ->add('label')
             ->add('body')
-            ->add('published')
-            ->add('approved')
-            ->add('author', EntityType::class, [
-                'class' => User::class,
-                'choice_label' => 'id',
-            ])
         ;
     }
 
