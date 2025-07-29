@@ -135,7 +135,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getFacts(): Collection
     {
-        return $this->facts;
+        // Reverse the order of facts to show the most recent first
+        return new ArrayCollection(array_reverse($this->facts->toArray()));
     }
 
     public function addFact(Fact $fact): static

@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Deine Facts{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1>Deine Facts</h1>
+        <div class="fact-container">
+            {% for fact in user.facts %}
+            <div class="fact">
+                <div class="fact-header">
+                    <div class="fact-label">{{ fact.label }}</div>
+                    <div class="approved">
+                        {% if fact.approved %}
+                            <span class="badge bg-success">Approved</span>
+                        {% else %}
+                            <span class="badge bg-warning text-black">Nicht Approved</span>
+                        {% endif %}
+                    </div>
+                    <div class="published">
+                        {% if fact.published %}
+                            Veröffentlicht am <br> {{ fact.published|date('d.m.Y G:i') }}
+                        {% else %}
+                            <a href="#" class="btn btn-danger">Löschen</a>
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="fact-body">
+                    {{ fact.body }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

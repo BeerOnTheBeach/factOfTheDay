@@ -14,7 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 final class ContributeFactController extends AbstractController
 {
     // TODO: restrict to logged in user via security config
-    #[Route('/', name: 'contribute_fact')]
+    #[Route('/fact', name: 'contribute_fact')]
     public function index(Request $request, EntityManagerInterface $entityManager): Response
     {
         $user = $this->getUser();

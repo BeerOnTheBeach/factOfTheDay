@@ -6,6 +6,8 @@ use App\Repository\FactRepository;
 use DateTime;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
 
 #[ORM\Entity(repositoryClass: FactRepository::class)]
 class Fact
@@ -15,9 +17,12 @@ class Fact
     #[ORM\Column]
     private int $id;
 
+
+    #[Assert\Length(max: 40, maxMessage: 'Die Überschrift darf maximal 40 Zeichen lang sein.')]
     #[ORM\Column(length: 255, nullable: false)]
     private string $label;
 
+    #[Assert\Length(max: 400, maxMessage: 'Der Fakt darf maximal 400 Zeichen lang sein.')]
     #[ORM\Column(type: Types::TEXT, nullable: false)]
     private string $body;
 

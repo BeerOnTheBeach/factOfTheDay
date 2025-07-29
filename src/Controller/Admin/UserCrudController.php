@@ -24,5 +24,4 @@ class UserCrudController extends AbstractCrudController
             CollectionField::new('facts'),
         ];
     }
-
 }

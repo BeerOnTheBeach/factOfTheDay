@@ -24,6 +24,7 @@ class FactCrudController extends AbstractCrudController
             TextField::new('label'),
             TextField::new('body'),
             AssociationField::new('author'),
+            BooleanField::new('approved'),
             DateTimeField::new('published'),
         ];
     }
